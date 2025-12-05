@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Dashboard</title>
+
+  <!-- Chart.js CDN (needed for the blood pressure chart) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="dashboard">
+
+    <!-- ▓▓ SIDEBAR ▓▓ -->
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <h1 class="app-title">Tech.Care</h1>
+      </header>
+
+      <section class="patients-section">
+        <div class="patients-header">
+          <h2>Patients</h2>
+        </div>
+
+        <div class="patients-list">
+          <div class="patient-item active">
+            <div class="patient-avatar">JT</div>
+            <div class="patient-info">
+              <div class="patient-name">Jessica Taylor</div>
+              <div class="patient-meta">Female, 28</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- ▓▓ MAIN CONTENT (CENTER AREA) ▓▓ -->
+    <main class="main">
+
+      <!-- ▓▓ DIAGNOSIS HISTORY CHART ▓▓ -->
+      <section class="diagnosis">
+        <h2>Diagnosis History</h2>
+
+        <div class="chart-container">
+          <canvas id="bpChart"></canvas>
+        </div>
+
+        <!-- ▓▓ VITALS ▓▓ -->
+        <div class="vitals">
+          <div class="vital-box">
+            <h3>Respiratory Rate</h3>
+            <p class="value" id="respiratory-value">-- bpm</p>
+            <p class="status" id="respiratory-status">--</p>
+          </div>
+
+          <div class="vital-box">
+            <h3>Temperature</h3>
+            <p class="value" id="temperature-value">-- °F</p>
+            <p class="status" id="temperature-status">--</p>
+          </div>
+
+          <div class="vital-box">
+            <h3>Heart Rate</h3>
+            <p class="value" id="heartrate-value">-- bpm</p>
+            <p class="status" id="heartrate-status">--</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ▓▓ DIAGNOSTIC LIST TABLE ▓▓ -->
+      <section class="diagnostic-list">
+        <h2>Diagnostic List</h2>
+
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th>Problem / Diagnosis</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="diagnostic-table-body">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- ▓▓ PROFILE PANEL (RIGHT SIDE) ▓▓ -->
+    <aside class="profile">
+
+      <!-- Profile Card -->
+      <section class="profile-card">
+        <div class="profile-header">
+          <img id="profile-picture" class="profile-photo" src="" alt="Profile" />
+
+          <div class="profile-main-info">
+            <h2 id="profile-name">Jessica Taylor</h2>
+            <p class="profile-role">Patient</p>
+          </div>
+        </div>
+
+        <dl class="profile-details">
+          <div class="detail-row">
+            <dt>Date of Birth</dt>
+            <dd id="dob-value">--</dd>
+          </div>
+
+          <div class="detail-row">
+            <dt>Gender</dt>
+            <dd id="gender-value">--</dd>
+          </div>
+
+          <div class="detail-row">
+            <dt>Contact Info</dt>
+            <dd id="contact-value">--</dd>
+          </div>
+
+          <div class="detail-row">
+            <dt>Emergency Contact</dt>
+            <dd id="emergency-value">--</dd>
+          </div>
+
+          <div class="detail-row">
+            <dt>Insurance Provider</dt>
+            <dd id="insurance-value">--</dd>
+          </div>
+        </dl>
+
+        <button class="btn-show-all">Show All Information</button>
+      </section>
+
+      <!-- ▓▓ LAB RESULTS (DYNAMIC) ▓▓ -->
+      <section class="lab-results">
+        <h3>Lab Results</h3>
+
+        <!-- JS will fill this UL -->
+        <ul id="lab-list" class="lab-list"></ul>
+      </section>
+
+    </aside>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

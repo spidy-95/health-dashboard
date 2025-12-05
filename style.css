@@ -1,0 +1,451 @@
+/* ===========================
+   RESET & GLOBAL STYLES
+   =========================== */
+
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   html,
+   body {
+     height: 100%;
+   }
+   
+   body {
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+       sans-serif;
+     background-color: #f5f7fb; /* light background like XD */
+     color: #1f2933;
+     line-height: 1.4;
+   }
+   
+   /* Simple utility classes */
+   
+   h1,
+   h2,
+   h3 {
+     font-weight: 600;
+     color: #1b2835;
+   }
+   
+   /* ===========================
+      LAYOUT: MAIN DASHBOARD GRID
+      =========================== */
+   
+   .dashboard {
+     max-width: 1600px;
+     margin: 0 auto;
+     min-height: 100vh;
+     padding: 24px 16px;
+     display: grid;
+     grid-template-columns: 260px 1.6fr 1.2fr;
+     gap: 24px;
+   }
+   
+   /* Card-like panel base */
+   
+   .sidebar,
+   .main,
+   .profile {
+     background-color: #ffffff;
+     border-radius: 20px;
+     box-shadow: 0 18px 40px rgba(15, 35, 52, 0.06);
+   }
+   
+   /* ===========================
+      SIDEBAR (LEFT)
+      =========================== */
+   
+   .sidebar {
+     padding: 24px 20px;
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .app-title {
+     font-size: 20px;
+     font-weight: 700;
+     color: #1b2835;
+   }
+   
+   .patients-section {
+     margin-top: 32px;
+   }
+   
+   .patients-header h2 {
+     font-size: 12px;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     color: #9aa5b1;
+   }
+   
+   .patients-list {
+     margin-top: 16px;
+   }
+   
+   .patient-item {
+     display: flex;
+     align-items: center;
+     padding: 10px 12px;
+     border-radius: 12px;
+     cursor: pointer;
+     transition: background-color 0.15s ease, box-shadow 0.15s ease;
+   }
+   
+   .patient-item + .patient-item {
+     margin-top: 8px;
+   }
+   
+   .patient-item.active {
+     background-color: #e1f7f4;
+     box-shadow: 0 10px 25px rgba(52, 199, 142, 0.25);
+   }
+   
+   .patient-avatar {
+     width: 36px;
+     height: 36px;
+     border-radius: 50%;
+     background: linear-gradient(135deg, #2563eb, #00c5ff);
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-weight: 600;
+     font-size: 14px;
+     margin-right: 10px;
+   }
+   
+   .patient-info .patient-name {
+     font-size: 14px;
+     font-weight: 600;
+   }
+   
+   .patient-info .patient-meta {
+     font-size: 12px;
+     color: #9aa5b1;
+   }
+   
+   /* ===========================
+      MAIN COLUMN (CENTER)
+      =========================== */
+   
+   .main {
+     padding: 24px 28px;
+     display: flex;
+     flex-direction: column;
+   }
+   
+   /* ---- Diagnosis Section ---- */
+   
+   .diagnosis h2 {
+     font-size: 18px;
+     margin-bottom: 16px;
+   }
+   
+   .chart-container {
+     background-color: #ffffff;
+     border-radius: 20px;
+     padding: 20px 24px;
+     box-shadow: 0 14px 30px rgba(15, 35, 52, 0.04);
+   }
+   
+   /* ---- Vitals cards ---- */
+   
+   .vitals {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 16px;
+     margin-top: 18px;
+   }
+   
+   .vital-box {
+     background-color: #ffffff;
+     border-radius: 20px;
+     padding: 18px 18px 16px;
+     box-shadow: 0 14px 30px rgba(15, 35, 52, 0.04);
+   }
+   
+   .vital-box h3 {
+     font-size: 13px;
+     color: #6b7785;
+     margin-bottom: 8px;
+   }
+   
+   .vital-box .value {
+     font-size: 20px;
+     font-weight: 700;
+     margin-bottom: 4px;
+   }
+   
+   .vital-box .status {
+     font-size: 12px;
+   }
+   
+   .status.normal {
+     color: #109c5b;
+   }
+   
+   .status.low {
+     color: #c23b6e;
+   }
+   
+   /* ---- Diagnostic List ---- */
+   
+   .diagnostic-list {
+     margin-top: 24px;
+   }
+   
+   .diagnostic-list h2 {
+     font-size: 16px;
+     margin-bottom: 14px;
+   }
+   
+   .diagnostic-table {
+     width: 100%;
+     border-collapse: collapse;
+     font-size: 13px;
+   }
+   
+   .diagnostic-table thead {
+     background-color: #f4f6fb;
+   }
+   
+   .diagnostic-table th,
+   .diagnostic-table td {
+     text-align: left;
+     padding: 10px 12px;
+   }
+   
+   .diagnostic-table th {
+     font-size: 12px;
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+     color: #8a94a6;
+   }
+   
+   .diagnostic-table tbody tr:nth-child(even) {
+     background-color: #fafbff;
+   }
+   
+   .diagnostic-table tbody tr:last-child td:first-child {
+     border-radius: 0 0 0 16px;
+   }
+   
+   .diagnostic-table tbody tr:last-child td:last-child {
+     border-radius: 0 0 16px 0;
+   }
+   
+   /* Status pill styles */
+   
+   .status-pill {
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     font-size: 12px;
+   }
+   
+   .status-dot {
+     width: 8px;
+     height: 8px;
+     border-radius: 999px;
+   }
+   
+   .status-pill.under {
+     color: #d97706;
+   }
+   
+   .status-pill.under .status-dot {
+     background-color: #fbbf24;
+   }
+   
+   .status-pill.cured {
+     color: #16a34a;
+   }
+   
+   .status-pill.cured .status-dot {
+     background-color: #22c55e;
+   }
+   
+   .status-pill.inactive {
+     color: #9ca3af;
+   }
+   
+   .status-pill.inactive .status-dot {
+     background-color: #d1d5db;
+   }
+   
+   .status-pill.untreated {
+     color: #b91c1c;
+   }
+   
+   .status-pill.untreated .status-dot {
+     background-color: #ef4444;
+   }
+   
+   /* ===========================
+      PROFILE PANEL (RIGHT)
+      =========================== */
+   
+   .profile {
+     padding: 24px 24px 28px;
+     display: flex;
+     flex-direction: column;
+   }
+   
+   /* ---- Profile Card ---- */
+   
+   .profile-card {
+     margin-bottom: 24px;
+   }
+   
+   .profile-header {
+     display: flex;
+     align-items: center;
+     margin-bottom: 18px;
+   }
+   
+   .profile-photo {
+     width: 56px;
+     height: 56px;
+     border-radius: 999px;
+     object-fit: cover;
+     margin-right: 12px;
+     background-color: #e5efff;
+   }
+   
+   .profile-main-info h2 {
+     font-size: 16px;
+     margin-bottom: 2px;
+   }
+   
+   .profile-role {
+     font-size: 13px;
+     color: #9aa5b1;
+   }
+   
+   .profile-details {
+     font-size: 13px;
+   }
+   
+   .detail-row {
+     display: flex;
+     justify-content: space-between;
+     padding: 6px 0;
+   }
+   
+   .detail-row dt {
+     color: #9aa5b1;
+   }
+   
+   .detail-row dd {
+     font-weight: 500;
+   }
+   
+   /* Show All Information button */
+   
+   .btn-show-all {
+     width: 100%;
+     margin-top: 18px;
+     background-color: #06c167;
+     color: #ffffff;
+     border: none;
+     border-radius: 999px;
+     padding: 10px 16px;
+     font-size: 14px;
+     font-weight: 600;
+     cursor: pointer;
+     box-shadow: 0 12px 25px rgba(6, 193, 103, 0.4);
+     transition: background-color 0.15s ease, box-shadow 0.15s ease;
+   }
+   
+   .btn-show-all:hover {
+     background-color: #05a457;
+     box-shadow: 0 10px 20px rgba(6, 193, 103, 0.35);
+   }
+   
+   /* ---- Lab Results ---- */
+   
+   .lab-results h3 {
+     font-size: 14px;
+     margin-bottom: 10px;
+   }
+   
+   .lab-list {
+     list-style: none;
+     border-radius: 16px;
+     overflow: hidden;
+     border: 1px solid #eef1f7;
+   }
+   
+   .lab-item {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 10px 14px;
+     font-size: 13px;
+     border-bottom: 1px solid #eef1f7;
+   }
+   
+   .lab-item:last-child {
+     border-bottom: none;
+   }
+   
+   .lab-name {
+     color: #1f2933;
+   }
+   
+   .lab-download {
+     border: none;
+     background: none;
+     cursor: pointer;
+     font-size: 16px;
+   }
+   
+   /* You can style the download icon to be subtle */
+   .lab-download::after {
+     content: "⬇";
+   }
+   
+   /* ===========================
+      RESPONSIVE
+      =========================== */
+   
+   @media (max-width: 1100px) {
+     .dashboard {
+       grid-template-columns: 260px 1.5fr;
+       grid-template-rows: auto auto;
+     }
+   
+     .profile {
+       grid-column: 1 / -1;
+     }
+   }
+   
+   @media (max-width: 850px) {
+     .dashboard {
+       grid-template-columns: 1fr;
+     }
+   
+     .sidebar {
+       order: 1;
+     }
+   
+     .main {
+       order: 2;
+       margin-top: 12px;
+     }
+   
+     .profile {
+       order: 3;
+       margin-top: 12px;
+     }
+   
+     .vitals {
+       grid-template-columns: 1fr;
+     }
+   }
+   
